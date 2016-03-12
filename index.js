@@ -1,4 +1,5 @@
-var http = require('http');
+var https = require('https');
+var url = require('url');
 
 var exports = {
   channel: '#general',
@@ -44,21 +45,38 @@ console.slack = function (message, channel, onSuccess) {
     return console.log(exports.username + " says " + message + " to " + channel);
   }
 
-  var request = new XMLHttpRequest();
-  request.onreadystatechange = function () {
-    if (request.readyState == 4) { // the request is complete
-      onSuccess(request.response, request.status);
-    }
-  };
+  var requestUrl = url.parse(exports.webhook);
 
-  request.open('POST', exports.webhook, true);
-  request.setRequestHeader('Content-Type', 'application/json');
-  request.send({
+  var request = https.request({
+    protocol : requestUrl.protocol,
+    hostname : requestUrl.hostname,
+    path     : requestUrl.path,
+    method   : 'POST',
+    headers  : {
+      'Content-Type' : 'application/json'
+    }
+  }, function(res){
+    var data = [];
+    res.on('data', function(chunk){
+      data.push(chunk);
+    });
+    res.on('end', function(){
+      onSuccess(data, res.statusCode);
+    });
+  });
+
+  request.on('error', function(e){
+    onSuccess(e.message, e.statusCode);
+  });
+
+  request.write(JSON.stringify({
     text: message,
     username: exports.username,
     icon_emoji: exports.emoji,
     channel: channel
-  });
+  }));
+
+  request.end();
 
 
 };
