@@ -24,8 +24,13 @@ do almost anything you require.  If not, it's on
 There's not a lot to this one.  This is it.
 
 ```
-console.slack(message[, channel]);
+console.slack(message[, channel[, onSuccess]]);
 ```
+
+- `message` is the content to be posted to Slack.
+- `channel` is the Slack channel to be posted to.  See below for defaults/options.
+- `onSuccess` is a function to be called once Slack has been successfully posted to.
+  - It provides two parameters, the response from Slack, and the request status.
 
 
 ## Options
