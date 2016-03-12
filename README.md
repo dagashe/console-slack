@@ -73,8 +73,3 @@ console.slack('Hello, function!, '', function(resp, status){
     console.log('Status was: ' + status);
 });
 ```
-
-## Known limitations
-
-If you call `console.slack()` within the onSuccess to a `console.slack()`, the function most recently passed
-in is called.  I'm working on a fix, but not 100% on it yet.
