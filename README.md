@@ -68,7 +68,7 @@ slack.options = {
 
 console.slack('Hello, World!');
 console.slack('Hello, Channel!', '#custom-channel');
-console.slack('Hello, function!, '', function(resp, status){
+console.slack('Hello, function!', '', function(resp, status){
     console.log('Response was: ' + resp);
     console.log('Status was: ' + status);
 });
