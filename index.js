@@ -26,6 +26,11 @@ exports.checkSettings = function (channel, onSuccess) {
     throw new TypeError('onSuccess must be a function');
   }
 
+  // make sure the emoji is the correct format
+  if (!/\:.*\:/.test(exports.emoji)){
+    throw new SyntaxError("Emoji syntax incorrect.  Should be ':emoji_name:'");
+  }
+
 };
 
 console.slack = function (message, channel, onSuccess) {
