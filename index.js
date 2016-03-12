@@ -43,8 +43,8 @@ console.slack = function (message, channel, onSuccess) {
   onSuccess = onSuccess || function(){}; // make sure we don't get any undefined errors.
 
   if (exports.webhook == 'test') {
-    onSuccess('This is simply a test', 200);
-    return console.log(exports.username + " says " + message + " to " + channel);
+    console.log(exports.username + " says " + message + " to " + channel);
+    return onSuccess('This is simply a test', 200);
   }
 
   var requestUrl = url.parse(exports.webhook);
