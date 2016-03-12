@@ -54,3 +54,27 @@ calls to `console.slack` will fail.  They have nowhere to go.
 
 - `slack.channel` can be set to `true` to send to the webhook's default channel.
 The channel can be set per-message, as well.
+
+## Example
+
+```
+var slack = require('console-slack');
+
+slack.options = {
+    webhook  : 'test', // don't want to make a post to slack
+    emoji    : ':100:',
+    username : 'cool-slack-bot'
+}
+
+console.slack('Hello, World!');
+console.slack('Hello, Channel!', '#custom-channel');
+console.slack('Hello, function!, '', function(resp, status){
+    console.log('Response was: ' + resp);
+    console.log('Status was: ' + status);
+});
+```
+
+## Known limitations
+
+If you call `console.slack()` within the onSuccess to a `console.slack()`, the function most recently passed
+in is called.  I'm working on a fix, but not 100% on it yet.
