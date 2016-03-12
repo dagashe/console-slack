@@ -30,7 +30,8 @@ console.slack(message[, channel]);
 
 ## Options
 
-The options shown below are the defaults (other than webhook).
+The options shown below are the defaults (other than webhook).  Webhook is the only required option,
+and can be set with `slack.webhook` if you don't want to pass in any other options.
 
 ```
 slack.options = {
