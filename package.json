@@ -1,4 +1,9 @@
 {
   "name": "console-slack",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "license" : "MIT",
+  "author" : {
+    "name" : "David Buchan-Swanson",
+    "email" : "david.buchanswanson@gmail.com"
+  }
 }
