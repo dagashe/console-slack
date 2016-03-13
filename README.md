@@ -8,7 +8,9 @@ I've written a few slack-bots in bash to do various things, like watch a folder 
 However, I now spend a lot of time in node.js, so a bot to do this without setting it up in bash would be super handy.
 
 It's a pretty basic module.  Not a great deal of functionality, but it should be customisable (with options) enough to
-do almost anything you require.  If not, it's on
+do almost anything you require.  If not, it's on [github](https://github.com/deecewan/console-slack).
+
+Please submit any issues [here](https://github.com/deecewan/console-slack/issues).
 
 
 ## Setup
